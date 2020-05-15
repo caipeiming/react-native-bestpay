@@ -1,6 +1,11 @@
-
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="top.cpming.rn.bestpay">
+    package="top.cpming.rn.bestpay">
 
+    <application>
+        <activity
+            android:name="com.bestpay.app.H5PayActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:theme="@android:style/Theme.NoTitleBar"
+            android:windowSoftInputMode="adjustPan|stateHidden|adjustResize" />
+    </application>
 </manifest>
-  
