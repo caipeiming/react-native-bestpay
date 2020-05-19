@@ -7,10 +7,13 @@ import android.util.Log;
 
 import com.bestpay.app.PaymentTask;
 import com.facebook.react.bridge.ActivityEventListener;
+import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
+import com.facebook.react.bridge.WritableMap;
+import com.facebook.react.modules.core.DeviceEventManagerModule;
 
 public class RNBestpayModule extends ReactContextBaseJavaModule implements ActivityEventListener {
     private final ReactApplicationContext reactContext;
@@ -30,6 +33,7 @@ public class RNBestpayModule extends ReactContextBaseJavaModule implements Activ
     @Override
     public void onActivityResult(Activity activity, int requestCode, int resultCode, Intent data) {
         Log.e(TAG, requestCode + "  " + resultCode);
+        this.sendEvent(Arguments.fromBundle(data.getExtras()));
     }
 
     @Override
@@ -49,4 +53,9 @@ public class RNBestpayModule extends ReactContextBaseJavaModule implements Activ
             promise.reject("1", e.getMessage());
         }
     }
+
+    private void sendEvent(WritableMap response) {
+        reactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class).emit("BestPay_Response", response);
+    }
+
 }

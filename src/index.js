@@ -1,2 +1,2 @@
 export * from './api';
-// export * from './bestpay-event';
+export * from './bestpay-event';
