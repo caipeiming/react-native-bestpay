@@ -1,0 +1,6 @@
+framework module BestPaySDK {
+  umbrella header "BestPaySDK-umbrella.h"
+
+  export *
+  module * { export * }
+}
