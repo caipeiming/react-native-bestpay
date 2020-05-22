@@ -2,7 +2,6 @@ package top.cpming.rn.bestpay;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.util.Log;
 
 import com.bestpay.app.PaymentTask;
@@ -42,16 +41,9 @@ public class RNBestpayModule extends ReactContextBaseJavaModule implements Activ
     }
 
     @ReactMethod
-    public void pay(String paramsStr, Promise promise) {
+    public void pay(String paramsStr, String license) {
         PaymentTask paymentTask = new PaymentTask(getCurrentActivity());
-        String pn = this.reactContext.getPackageName();
-        try {
-            String license = this.reactContext.getPackageManager().getPackageInfo(pn, PackageManager.GET_SIGNATURES).signatures[0].toCharsString();
-            paymentTask.pay(paramsStr, license);
-        } catch (Exception e) {
-            e.printStackTrace();
-            promise.reject("1", e.getMessage());
-        }
+        paymentTask.pay(paramsStr, license);
     }
 
     private void sendEvent(WritableMap response) {

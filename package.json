@@ -2,7 +2,7 @@
 {
   "name": "react-native-bestpay",
   "version": "1.0.0",
-  "description": "",
+  "description": "react-native for BestPay",
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,8 +10,9 @@
   "keywords": [
     "react-native"
   ],
-  "author": "",
-  "license": "",
+  "author": "caipeiming",
+  "homepage": "https://github.com/caipeiming/react-native-bestpay.git",
+  "license": "MIT",
   "peerDependencies": {
     "react-native": "^0.41.2"
   },
