@@ -1,7 +1,6 @@
 
 #import "RNBestpay.h"
-#import "BestpaySDK.h"
-#import "BestpayNativeModel.h"
+#import <BestPaySDK/BestpayUtil.h>
 
 @implementation RNBestpay
 
@@ -37,7 +36,8 @@ RCT_EXPORT_MODULE(RNBestpay)
 {
     NSString * aURLString =  [aNotification userInfo][@"url"];
     NSURL * aURL = [NSURL URLWithString:aURLString];
-    [BestpaySDK processOrderWithPaymentResult:aURL standbyCallback:^(NSDictionary *resultDic){
+    [BestpayUtil processOrderWithPaymentResult:aURL standbyCallback:^(NSDictionary *resultDic) {
+        //回调结果可在这边处理,也可在调起支付方法处理
         NSMutableDictionary *body = [[NSMutableDictionary alloc]init];
         [body setValue:resultDic forKey:@"result"];
         [self sendEventWithName:@"BestPay_Response" body:body];
@@ -52,11 +52,12 @@ RCT_EXPORT_METHOD(pay:(NSString*)orderStr :(NSString*)keyboardLicense)
         dispatch_async(dispatch_get_main_queue(), ^(void) {
             UIWindow *window = [UIApplication sharedApplication].keyWindow;
             UIViewController *rootViewController = window.rootViewController;
-            BestpayNativeModel *order = [[BestpayNativeModel alloc] init];
-            order.orderInfo = orderStr;
-            order.keyboardLicense = keyboardLicense;
-            order.scheme = self.schemeStr;
-            [BestpaySDK payWithOrder:order fromViewController:rootViewController callback:^(NSDictionary *resultDic){
+            [BestpayUtil payWithOrderInfo:orderStr
+                           merchantScheme:self.schemeStr
+                       fromViewController:rootViewController
+                          keyboardLicense:keyboardLicense
+                                 callback:^(NSDictionary *resultDic) {
+                //结果回调
                 NSLog(@"result == %@", resultDic);
             }];
         });

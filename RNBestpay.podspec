@@ -9,13 +9,12 @@ Pod::Spec.new do |s|
   s.author       = { "author" => "caipeiming" }
   s.platform     = :ios, "9.0"
   s.source       = { :git => "https://github.com/caipeiming/react-native-bestpay.git", :tag => "master" }
-  s.source_files = "ios/RNBestpay/**/*.{h,m}"
+  s.source_files = "ios/RNBestpay/*.{h,m}"
   s.requires_arc = true
-  s.frameworks   = 'Foundation','UIKit','AudioToolbox','CoreGraphics','QuartzCore','CFNetwork','SystemConfiguration'
-  s.libraries    = 'c++','sqlite3.0'
-  s.vendored_libraries = "ios/RNBestpay/*.a"
+  s.vendored_frameworks = 'ios/RNBestpay/BestPaySDK/Frameworks/BestPaySDK.framework'
+  s.libraries    = 'c++'
+  s.vendored_libraries = "ios/RNBestpay/BestPaySDK/Frameworks/*.a"
+  s.resources    = 'ios/RNBestpay/BestPaySDK/Resources/*.bundle'
 
   s.dependency "React"
-  #s.dependency "others"
-
 end
