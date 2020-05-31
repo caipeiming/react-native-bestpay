@@ -1,4 +1,3 @@
-
 {
   "name": "react-native-bestpay",
   "version": "1.0.0",
@@ -8,7 +7,15 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "react-native"
+    "react",
+    "native",
+    "react-native",
+    "react-native-bestpay",
+    "bestpay",
+    "翼支付",
+    "翼支付App",
+    "翼支付App支付",
+    "翼支付 React Native"
   ],
   "author": "caipeiming",
   "homepage": "https://github.com/caipeiming/react-native-bestpay.git",

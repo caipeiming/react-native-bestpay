@@ -12,7 +12,7 @@
 yarn add react-native-bestpay
 ```
 
-### React Native 0.59 以下
+### React Native <= 0.59
 
 ```sh
 react-native link react-native-china-unionpay
@@ -28,7 +28,7 @@ react-native link react-native-china-unionpay
 
 <p align="center"><img src="https://raw.githubusercontent.com/caipeiming/react-native-bestpay/master/2.png" alt="Xcode set iOS NSAppTransportSecurity"></p>
 
-3. 由于安全键盘库中使用了分类方法, 所以需要在 TARGETS -> Build Setting -> Linking -> Other Linker Flags 添加 -ObjC -all_load
+3. 由于安全键盘库中使用了分类方法, 所以需要在 TARGETS -> Build Setting -> Linking -> Other Linker Flags 添加 `-ObjC -all_load`
 
 ## 使用
 
